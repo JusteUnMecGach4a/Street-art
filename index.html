@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Reset et base */
+        /* --- LE DESIGN (CSS) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
@@ -44,6 +44,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
+            /* Image de fond fiable (Unsplash) */
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1565689865889-c94074ba7d4c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -95,7 +96,16 @@
         .bio-content.reverse { flex-direction: row-reverse; }
         .text { flex: 1; }
         .img-highlight { flex: 1; }
-        .img-highlight img { width: 100%; border-radius: 8px; box-shadow: 10px 10px 0px rgba(64, 224, 208, 0.1); object-fit: cover; }
+        
+        /* Style des images pour être sûr qu'elles s'affichent */
+        .img-highlight img { 
+            width: 100%; 
+            max-width: 600px; /* Limite la taille pour pas que ça explose l'écran */
+            border-radius: 8px; 
+            box-shadow: 10px 10px 0px rgba(64, 224, 208, 0.1); 
+            object-fit: cover; 
+            display: block; /* Important pour éviter les bugs d'affichage */
+        }
         
         .separator { border: 0; height: 1px; background: #333; width: 60%; margin: 0 auto; }
         
@@ -126,6 +136,7 @@
         .img-container img {
             width: 100%; height: 300px; object-fit: cover;
             border-radius: 5px; filter: grayscale(100%); transition: filter 0.5s;
+            background-color: #333; /* Fond gris si l'image charge mal */
         }
         .art-card:hover img { filter: grayscale(0%); }
         .art-card h3 { margin-top: 15px; color: #40E0D0; font-family: 'Playfair Display', serif; }
@@ -167,12 +178,41 @@
     </header>
 
     <section id="pignon" class="container">
-        </section>
+        <h2>Ernest Pignon-Ernest</h2>
+        <div class="bio-content">
+            <div class="text">
+                <p>Bien avant que le Street Art ne soit à la mode, <strong>Ernest Pignon-Ernest</strong> collait déjà ses dessins grandeur nature sur les murs des villes. Depuis 1966, il fait de la rue son lieu d'exposition.</p>
+                <p>Son œuvre phare, <strong>Arthur Rimbaud</strong>, collée à Paris et Charleville, est devenue une icône. Il ne dégrade pas les murs, il révèle leur histoire à travers des sérigraphies fragiles.</p>
+                
+                <button id="reveal-fact" class="btn-secondary">Le saviez-vous ?</button>
+                <p id="fun-fact" class="hidden">Il dessine d'abord au fusain et à la pierre noire, puis ses œuvres sont reproduites sur du papier journal très fragile qui disparaît avec le temps.</p>
+            </div>
+            <div class="img-highlight">
+                <img src="https://images.unsplash.com/photo-1583431272380-140414734424?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pignon Ernest">
+            </div>
+        </div>
+    </section>
 
     <hr class="separator">
 
     <section id="banksy" class="container banksy-section">
-         </section>
+        <h2>Banksy : L'Héritier Rebelle</h2>
+        
+        <div class="bio-content reverse">
+            <div class="text">
+                <p>Originaire de Bristol, <strong>Banksy</strong> cultive l'anonymat comme une arme. Contrairement aux collages de Pignon, Banksy utilise le <strong>pochoir</strong> pour une exécution rapide.</p>
+                
+                <blockquote class="quote-box">
+                    "L'art doit réconforter ceux qui sont troublés et troubler ceux qui sont confortables."
+                </blockquote>
+
+                <p>Ses œuvres sont politiquement engagées, ironiques et s'arrachent aujourd'hui à prix d'or.</p>
+            </div>
+            <div class="img-highlight">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg/800px-Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg" alt="Banksy Girl with Balloon">
+            </div>
+        </div>
+    </section>
 
     <section id="gallery" class="container gallery-section">
         <h2>Galerie Urbaine</h2>
@@ -183,8 +223,55 @@
             <button class="filter-btn" data-filter="banksy">Banksy</button>
         </div>
 
-        <div class="gallery-grid" id="gallery-grid">
+        <div class="gallery-grid">
+            <div class="art-card" data-category="pignon">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1580130712368-4b8a6663073a?auto=format&fit=crop&w=500&q=80" alt="Rimbaud">
+                </div>
+                <h3>Rimbaud</h3>
+                <p>Le poète vagabond</p>
             </div>
+            
+            <div class="art-card" data-category="pignon">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=500&q=80" alt="Pasolini">
+                </div>
+                <h3>Pasolini</h3>
+                <p>Pietà moderne</p>
+            </div>
+
+             <div class="art-card" data-category="pignon">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?auto=format&fit=crop&w=500&q=80" alt="Naples">
+                </div>
+                <h3>Les ruelles de Naples</h3>
+                <p>Fusion avec le mur</p>
+            </div>
+
+            <div class="art-card" data-category="banksy">
+                <div class="img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg/640px-Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg" alt="Girl with Balloon">
+                </div>
+                <h3>Girl with Balloon</h3>
+                <p>L'espoir s'envole</p>
+            </div>
+
+            <div class="art-card" data-category="banksy">
+                <div class="img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Banksys_flower-throwing_protester._%2817801207806%29.jpg/640px-Banksys_flower-throwing_protester._%2817801207806%29.jpg" alt="Flower Thrower">
+                </div>
+                <h3>Flower Thrower</h3>
+                <p>La violence des fleurs</p>
+            </div>
+            
+             <div class="art-card" data-category="banksy">
+                <div class="img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Mild_Mild_West_-_geograph.org.uk_-_1463778.jpg/640px-The_Mild_Mild_West_-_geograph.org.uk_-_1463778.jpg" alt="Mild Mild West">
+                </div>
+                <h3>Mild Mild West</h3>
+                <p>Culture Pop détournée</p>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -192,86 +279,20 @@
     </footer>
 
     <script>
-        // 1. LES DONNÉES
-        const dataPignon = {
-            titre: "Ernest Pignon-Ernest",
-            desc: "Bien avant que le Street Art ne soit à la mode, <strong>Ernest Pignon-Ernest</strong> collait déjà ses dessins grandeur nature sur les murs des villes. Depuis 1966, il fait de la rue son lieu d'exposition.<br><br>Son œuvre phare, <strong>Arthur Rimbaud</strong>, collée à Paris et Charleville, est devenue une icône.",
-            funFact: "Il dessine d'abord au fusain et à la pierre noire, puis ses œuvres sont reproduites sur du papier journal très fragile qui disparaît avec le temps.",
-            img: "https://images.unsplash.com/photo-1583431272380-140414734424?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        };
-
-        const dataBanksy = {
-            titre: "Banksy : L'Héritier Rebelle",
-            desc: "Originaire de Bristol, <strong>Banksy</strong> cultive l'anonymat comme une arme. Contrairement aux collages de Pignon, Banksy utilise le <strong>pochoir</strong> pour une exécution rapide.",
-            citation: "L'art doit réconforter ceux qui sont troublés et troubler ceux qui sont confortables.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg/800px-Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg"
-        };
-
-        const galerieImages = [
-            { artiste: 'pignon', titre: 'Rimbaud', desc: 'Le poète vagabond', img: 'https://images.unsplash.com/photo-1580130712368-4b8a6663073a?auto=format&fit=crop&w=500&q=80' },
-            { artiste: 'pignon', titre: 'Pasolini', desc: 'Pietà moderne', img: 'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=500&q=80' },
-            { artiste: 'pignon', titre: 'Naples', desc: 'Fusion avec le mur', img: 'https://images.unsplash.com/photo-1518640467707-6811f4a6ab73?auto=format&fit=crop&w=500&q=80' },
-            { artiste: 'banksy', titre: 'Girl with Balloon', desc: "L'espoir s'envole", img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg/640px-Banksy_Girl_and_Heart_Balloon_%282840632113%29.jpg' },
-            { artiste: 'banksy', titre: 'Flower Thrower', desc: 'La violence des fleurs', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Banksys_flower-throwing_protester._%2817801207806%29.jpg/640px-Banksys_flower-throwing_protester._%2817801207806%29.jpg' },
-            { artiste: 'banksy', titre: 'Mild Mild West', desc: 'Culture Pop détournée', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Mild_Mild_West_-_geograph.org.uk_-_1463778.jpg/640px-The_Mild_Mild_West_-_geograph.org.uk_-_1463778.jpg' }
-        ];
-
-        // 2. LE MOTEUR
         document.addEventListener('DOMContentLoaded', () => {
-            console.log("Le site démarre...");
-
-            // Génération Pignon
-            const pignonSection = document.getElementById('pignon');
-            if(pignonSection) {
-                pignonSection.innerHTML = `
-                    <h2>${dataPignon.titre}</h2>
-                    <div class="bio-content">
-                        <div class="text">
-                            <p>${dataPignon.desc}</p>
-                            <button id="reveal-fact" class="btn-secondary">Le saviez-vous ?</button>
-                            <p id="fun-fact" class="hidden">${dataPignon.funFact}</p>
-                        </div>
-                        <div class="img-highlight"><img src="${dataPignon.img}" alt="${dataPignon.titre}"></div>
-                    </div>`;
-                
-                // Logique Saviez-vous
-                document.getElementById('reveal-fact').addEventListener('click', function() {
-                    const fact = document.getElementById('fun-fact');
-                    fact.classList.remove('hidden');
-                    fact.classList.add('visible');
-                    this.style.display = 'none';
+            
+            // 1. Bouton Saviez-vous
+            const btnReveal = document.getElementById('reveal-fact');
+            const funFactText = document.getElementById('fun-fact');
+            if(btnReveal && funFactText) {
+                btnReveal.addEventListener('click', () => {
+                    funFactText.classList.remove('hidden');
+                    funFactText.classList.add('visible');
+                    btnReveal.style.display = 'none'; 
                 });
             }
 
-            // Génération Banksy
-            const banksySection = document.getElementById('banksy');
-            if(banksySection) {
-                banksySection.innerHTML = `
-                    <h2>${dataBanksy.titre}</h2>
-                    <div class="bio-content reverse">
-                        <div class="text">
-                            <p>${dataBanksy.desc}</p>
-                            <blockquote class="quote-box">"${dataBanksy.citation}"</blockquote>
-                        </div>
-                        <div class="img-highlight"><img src="${dataBanksy.img}" alt="${dataBanksy.titre}"></div>
-                    </div>`;
-            }
-
-            // Génération Galerie
-            const galleryGrid = document.getElementById('gallery-grid');
-            if(galleryGrid) {
-                galerieImages.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'art-card';
-                    card.setAttribute('data-category', item.artiste);
-                    card.innerHTML = `
-                        <div class="img-container"><img src="${item.img}" alt="${item.titre}"></div>
-                        <h3>${item.titre}</h3><p>${item.desc}</p>`;
-                    galleryGrid.appendChild(card);
-                });
-            }
-
-            // Filtres
+            // 2. Filtres Galerie
             const filterButtons = document.querySelectorAll('.filter-btn');
             const artCards = document.querySelectorAll('.art-card');
 
@@ -285,7 +306,7 @@
                         if (category === 'all' || card.getAttribute('data-category') === category) {
                             card.style.display = 'block';
                             card.style.animation = 'none';
-                            card.offsetHeight; 
+                            card.offsetHeight; // Trigger reflow
                             card.style.animation = 'fadeIn 0.5s ease-in-out';
                         } else {
                             card.style.display = 'none';
@@ -294,8 +315,9 @@
                 });
             });
 
-            // Année Footer
-            document.getElementById('year').textContent = new Date().getFullYear();
+            // 3. Année
+            const yearSpan = document.getElementById('year');
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
         });
     </script>
 </body>

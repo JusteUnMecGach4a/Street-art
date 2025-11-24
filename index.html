@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Art | Pignon & Banksy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">STREET ART</div>
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#pignon">Pignon-Ernest</a></li>
+            <li><a href="#banksy">Banksy</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>L'âme des murs</h1>
+            <p>Du fusain au pochoir : histoire de deux légendes urbaines.</p>
+            <a href="#gallery" class="btn-turquoise">Voir les œuvres</a>
+        </div>
+    </header>
+
+    <section id="pignon" class="container">
+        </section>
+
+    <hr class="separator">
+
+    <section id="banksy" class="container banksy-section">
+         </section>
+
+    <section id="gallery" class="container gallery-section">
+        <h2>Galerie Urbaine</h2>
+        
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">Tout voir</button>
+            <button class="filter-btn" data-filter="pignon">Pignon-Ernest</button>
+            <button class="filter-btn" data-filter="banksy">Banksy</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> - Hommage au Street Art. Codé avec passion sur Vercel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
